@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
+import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
 
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
@@ -72,7 +73,7 @@ public class AdvancedEnderChestConverter extends Converter {
         this.plugin.getLogger().info("Migration Complete!");
         this.plugin.getLogger().info("Please restart your server!");
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, () -> Bukkit.getPluginManager().disablePlugin(this.plugin));
+        Bukkit.getGlobalRegionScheduler().run(this.plugin, (task) -> Bukkit.getPluginManager().disablePlugin(this.plugin));
         return true;
     }
 

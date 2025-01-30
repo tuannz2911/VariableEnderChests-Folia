@@ -1,5 +1,7 @@
 package me.saif.betterenderchests;
 
+import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
+import io.papermc.paper.threadedregions.scheduler.AsyncScheduler;
 import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
 import me.saif.betterenderchests.command.CommandManager;
 import me.saif.betterenderchests.command.commands.ClearEnderChestCommand;
@@ -193,6 +195,8 @@ public final class VariableEnderChests extends JavaPlugin {
 
         if (this.enderChestHook != null)
             this.enderChestHook.unregister();
+        Bukkit.getGlobalRegionScheduler().cancelTasks(this);
+        Bukkit.getAsyncScheduler().cancelTasks(this);
     }
 
 

@@ -59,7 +59,7 @@ public class VanillaConverter extends Converter {
         this.plugin.getLogger().info("Migration Complete!");
         this.plugin.getLogger().info("Please restart your server!");
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, () -> Bukkit.getPluginManager().disablePlugin(this.plugin));
+        Bukkit.getGlobalRegionScheduler().run(this.plugin, (task) -> Bukkit.getPluginManager().disablePlugin(this.plugin));
         return true;
     }
 

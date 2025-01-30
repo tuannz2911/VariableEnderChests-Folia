@@ -12,6 +12,7 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
+import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
 
 public class InventoryNameListener_1_20 implements Listener {
 
@@ -47,7 +48,7 @@ public class InventoryNameListener_1_20 implements Listener {
 
         String newName = loc.getSingleFormattedMessage(InvMultilangCommons.SIZE_NAME_MAP.get(ownerSizePair.getValue()), InvMultilangCommons.PLAYER_NAME_PLACEHOLDER.getResult(ownerSizePair.getKey()));
 
-        Bukkit.getScheduler().runTask(this.plugin, () -> event.getView().setTitle(newName));
+        Bukkit.getGlobalRegionScheduler().run(this.plugin, (task) -> event.getView().setTitle(newName));
 
         //This is a 1.20+ paper feature to set the inv name via the event
         //we can then update the actual inv name a tick later
