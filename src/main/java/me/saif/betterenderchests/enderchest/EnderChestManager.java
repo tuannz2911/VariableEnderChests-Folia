@@ -57,17 +57,8 @@ public class EnderChestManager extends Manager<VariableEnderChests> implements L
         this.dataManager = getPlugin().getDataManager();
 
 
-        //load the correct sound depending on verison
-        if (MinecraftVersion.getVersion() == MinecraftVersion.MC1_8_R3) {
-            OPEN_SOUND = Sound.valueOf("CHEST_OPEN");
-            CLOSE_SOUND = Sound.valueOf("CHEST_CLOSE");
-        } else if (!MinecraftVersion.isNewerThan(MinecraftVersion.MC1_12_R1)) {
-            OPEN_SOUND = Sound.valueOf("BLOCK_ENDERCHEST_OPEN");
-            CLOSE_SOUND = Sound.valueOf("BLOCK_ENDERCHEST_CLOSE");
-        } else {
-            OPEN_SOUND = Sound.valueOf("BLOCK_ENDER_CHEST_OPEN");
-            CLOSE_SOUND = Sound.valueOf("BLOCK_ENDER_CHEST_CLOSE");
-        }
+        OPEN_SOUND = Sound.BLOCK_ENDER_CHEST_OPEN;
+        CLOSE_SOUND = Sound.BLOCK_ENDER_CHEST_CLOSE;
 
         //getting config values
         this.convert = this.getPlugin().getConfig().getBoolean("convert-current-ender-chest", true);
